@@ -14,7 +14,7 @@ class _queState extends State<que> {
     Quiz(ques: "Panaji is the capital of Assam",ans: false),
     Quiz(ques: "car have 4 wheels",ans: true),
     Quiz(ques: "india has 35 states",ans: false),
-    Quiz(ques: "125 is greater than 200",ans: true),
+    Quiz(ques: "125 is greater than 200",ans: false),
     Quiz(ques: " India is the largest country in the world",ans: false),
     Quiz(ques: "keerthana is a student",ans: false),
     Quiz(ques: "lakshmi is a comdeian",ans: false),
@@ -23,12 +23,22 @@ class _queState extends State<que> {
 
   ];
   int q=0;
+  String result="";
   void nextQus(){
     setState(() {
       if(q<question.length){
         q++;
       }
     });
+  }
+  void check(bool name){
+    print(name);
+    if(name==question[q].ans){
+     result='correct';
+    }
+    else{
+    result= "wrong";
+    };
 
   }
   @override
@@ -53,14 +63,16 @@ class _queState extends State<que> {
                 width: 300,
                 child: ElevatedButton(
                     style:ElevatedButton.styleFrom(backgroundColor: Colors.grey,foregroundColor: Colors.white),
-                    onPressed: (){nextQus();}, child: Text('true'))),
+                    onPressed: (){check(true); nextQus();}, child: Text('true'))),
             SizedBox(height: 50,),
             Container(
                 height: 60,
                 width: 300,
                 child: ElevatedButton(
                     style:ElevatedButton.styleFrom(backgroundColor: Colors.brown,foregroundColor: Colors.white),
-                    onPressed: (){nextQus();}, child: Text('false'))),
+                    onPressed: (){check(false);nextQus();}, child: Text('false'))),
+            Text(result,
+              style: TextStyle(fontSize: 28,color: Colors.white),),
           ],
         ),
       ),
