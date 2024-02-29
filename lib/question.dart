@@ -29,7 +29,7 @@ class _queState extends State<que> {
         q++;
       }
     });
-    
+
   }
   @override
   Widget build(BuildContext context) {
